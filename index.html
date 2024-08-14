@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism Card Details</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            background-color: rgb(244, 244, 244); /* Light background for contrast */
+        }
+        h1 {
+            margin: 20px 0;
+            font-size: 2em;
+            color: #333;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 10px;
+            cursor: pointer;
+            width: calc(33.33% - 20px); /* 3 cards per row */
+            background-color: white; /* White background for the card */
+            overflow: hidden;
+            box-sizing: border-box;
+            text-align: center;
+            position: relative; /* For positioning the close button */
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .card:hover {
+            background-color: #f9f9f9;
+        }
+        .card-details {
+            display: none;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            text-align: left;
+        }
+        
+        .card-title {
+            margin: 10px 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .fullscreen {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            z-index: 1001;
+            background-color: white;
+            overflow: auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .fullscreen img {
+            width: 100%;
+            height: auto;
+            max-height: 60vh;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+        .fullscreen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 1000;
+            display: none;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lets Tour</h1>
+    <div class="container">
+        <div class="card">
+            <img src="https://www.planetware.com/wpimages/2020/01/india-in-pictures-beautiful-places-to-photograph-kapaleeshwarar-temple.jpg" alt="Kapaleeshwarar Temple">
+            <div class="card-title">Kapaleeshwarar Temple</div>
+            <div class="card-details">
+               
+                <p>Location: Chennai, Tamil Nadu</p>
+                <p>Description: The Kapaleeshwarar Temple is a Hindu temple dedicated to Lord Shiva located in Mylapore, Chennai in the Indian state of Tamil Nadu. The form of Shiva's consort Parvati worshipped at this temple is called Karpagambal.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.planetware.com/wpimages/2020/01/india-in-pictures-beautiful-places-to-photograph-taj-mahal.jpg" alt="Taj Mahal">
+            <div class="card-title">Taj Mahal</div>
+            <div class="card-details">
+                
+                <p>Location: Agra, Uttar Pradesh</p>
+                <p>Description: The Taj Mahal is an ivory-white marble mausoleum on the southern bank of the river Yamuna in the Indian city of Agra. It was commissioned in 1632 by the Mughal emperor Shah Jahan to house the tomb of his favorite wife, Mumtaz Mahal.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.planetware.com/wpimages/2020/01/india-in-pictures-beautiful-places-to-photograph-the-ganges-river-varanasi.jpg" alt="The Ganges River, Varanasi">
+            <div class="card-title">The Ganges River, Varanasi</div>
+            <div class="card-details">
+                
+                <p>Location: Varanasi, Uttar Pradesh</p>
+                <p>Description: The Ganges, or Ganga, is a trans-boundary river of Asia which flows through India and Bangladesh. The 2,525 km river rises in the western Himalayas in the Indian state of Uttarakhand, and flows south and east through the Gangetic Plain of North India into Bangladesh.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.planetware.com/wpimages/2020/01/india-in-pictures-beautiful-places-to-photograph-tea-plantations.jpg" alt="Tea Plantations">
+            <div class="card-title">Tea Plantations</div>
+            <div class="card-details">
+                
+                <p>Location: Various locations in India</p>
+                <p>Description: India is one of the largest producers of tea in the world. The tea plantations in India are spread across various regions including Assam, Darjeeling, and Nilgiri. These plantations are known for their scenic beauty and high-quality tea production.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.planetware.com/wpimages/2020/01/india-in-pictures-beautiful-places-to-photograph-darjeeling-west-bengal.jpg" alt="Darjeeling, West Bengal">
+            <div class="card-title">Darjeeling, West Bengal</div>
+            <div class="card-details">
+                
+                <p>Location: Darjeeling, West Bengal</p>
+                <p>Description: Darjeeling is a town in the Indian state of West Bengal. It is internationally renowned as a tourist destination, along with its tea industry and the Darjeeling Himalayan Railway, a UNESCO World Heritage Site.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.planetware.com/wpimages/2020/01/india-in-pictures-beautiful-places-to-photograph-meenakshi-amman-temple.jpg" alt="Meenakshi Amman Temple">
+            <div class="card-title">Meenakshi Amman Temple</div>
+            <div class="card-details">
+                
+                <p>Location: Madurai, Tamil Nadu</p>
+                <p>Description: The Meenakshi Temple is a historic Hindu temple located on the southern bank of the Vaigai River in the temple city of Madurai, Tamil Nadu, India. It is dedicated to Meenakshi, a form of Parvati, and her consort, Sundareshwar, a form of Shiva.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.planetware.com/wpimages/2020/01/india-in-pictures-beautiful-places-to-photograph-mehrangarh-fort.jpg" alt="Mehrangarh Fort">
+            <div class="card-title">Mehrangarh Fort</div>
+            <div class="card-details">
+                
+                <p>Location: Jodhpur, Rajasthan</p>
+                <p>Description: Mehrangarh, located in Jodhpur, Rajasthan, is one of the largest forts in India. Built around 1459 by Rao Jodha, the fort is situated 410 feet above the city and is enclosed by imposing thick walls.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.planetware.com/wpimages/2020/01/india-in-pictures-beautiful-places-to-photograph-red-fort-delhi.jpg" alt="Red Fort, Delhi">
+            <div class="card-title">Red Fort, Delhi</div>
+            <div class="card-details">
+                
+                <p>Location: Delhi</p>
+                <p>Description: The Red Fort is a historic fort in the city of Delhi in India. It was the main residence of the Mughal emperors. Emperor Shah Jahan commissioned construction of the Red Fort on 12 May 1638, when he decided to shift his capital from Agra to Delhi.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.planetware.com/wpimages/2020/01/india-in-pictures-beautiful-places-to-photograph-amer-fort-jaipur.jpg" alt="Amer Fort, Jaipur">
+            <div class="card-title">Amer Fort, Jaipur</div>
+            <div class="card-details">
+                
+                <p>Location: Jaipur, Rajasthan</p>
+                <p>Description: Amer Fort is a fort located in Amer, Rajasthan, India. Amer is a town with an area of 4 square kilometres located 11 kilometres from Jaipur, the capital of Rajasthan. The town of Amer and the Amber Fort were originally built by the Meenas, and later it was ruled by Raja Man Singh I.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.planetware.com/wpimages/2020/01/india-in-pictures-beautiful-places-to-photograph-ellora-caves.jpg" alt="Ellora Caves">
+            <div class="card-title">Ellora Caves</div>
+            <div class="card-details">
+                
+                <p>Location: Aurangabad, Maharashtra</p>
+                <p>Description: Ellora is a UNESCO World Heritage Site located in the Aurangabad district of Maharashtra, India. It is one of the largest rock-cut monastery-temple cave complexes in the world, featuring Buddhist, Hindu, and Jain monuments, and artwork, dating from the 600-1000 CE period.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.planetware.com/wpimages/2020/01/india-in-pictures-beautiful-places-to-photograph-bandra-worli-sea-link-mumbai.jpg" alt="Bandra-Worli Sea Link, Mumbai">
+            <div class="card-title">Bandra-Worli Sea Link, Mumbai</div>
+            <div class="card-details">
+                
+                <p>Location: Mumbai, Maharashtra</p>
+                <p>Description: The Bandra-Worli Sea Link is a cable-stayed bridge with pre-stressed concrete-steel viaducts on either side that links Bandra in the Western Suburbs of Mumbai with Worli in South Mumbai. The bridge is a part of the proposed Western Freeway that will link the Western Suburbs to Nariman Point in Mumbai's main business district.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.planetware.com/wpimages/2021/11/india-in-pictures-beautiful-places-to-photograph-bhagwan-mahavir-wildlife-sanctuary.jpg" alt="Bhagwan Mahavir Wildlife Sanctuary">
+            <div class="card-title">Bhagwan Mahavir Wildlife Sanctuary</div>
+            <div class="card-details">
+                
+                <p>Location: Goa</p>
+                <p>Description: Bhagwan Mahavir Wildlife Sanctuary is a 240 square kilometre protected area located in the Western Ghats of India, in Sanguem taluk, Goa State. It is situated near the town of Molem, 57 kilometres east of Panaji, the state capital of Goa.</p>
+            </div>
+        </div>
+    </div>
+    <div class="fullscreen-overlay"></div>
+    <script>
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                document.querySelector('.fullscreen-overlay').style.display = 'block';
+                card.classList.add('fullscreen');
+                card.querySelector('.card-details').style.display = 'block';
+
+                const closeButton = document.createElement('button');
+                closeButton.textContent = 'Close';
+                closeButton.className = 'close-button';
+                card.appendChild(closeButton);
+
+                closeButton.addEventListener('click', (event) => {
+                    event.stopPropagation(); // Prevent triggering the card click event
+                    document.querySelector('.fullscreen-overlay').style.display = 'none';
+                    card.classList.remove('fullscreen');
+                    card.querySelector('.card-details').style.display = 'none';
+                    card.removeChild(closeButton);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
